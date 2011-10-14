@@ -98,9 +98,14 @@ public class MusicOrganizerUtils {
         return newone;
     }
 
+    /*
+     * 
+     * @param String path 
+     * 
+     */
     public static boolean validatePath(String path, int type) {
 
-        slashLess(path);
+        MusicOrganizerUtils.slashLess(path);
 
         File directory = new File(path);
         boolean flag = false;
@@ -112,9 +117,9 @@ public class MusicOrganizerUtils {
                     if (inputFiles.length != 0) {
                         for (int i = 0; i < inputFiles.length; i++) {
                             if (inputFiles[i].isDirectory()) {
-                                return validatePath(inputFiles[i].getAbsolutePath(), type);
+                                return MusicOrganizerUtils.validatePath(inputFiles[i].getAbsolutePath(), type);
                             } else {
-                                return validateMp3(inputFiles[i].getName());
+                                return MusicOrganizerUtils.validateMp3(inputFiles[i].getName());
                             }
                         }
                     }
@@ -165,8 +170,8 @@ public class MusicOrganizerUtils {
 
     public static boolean validateTags(String artist, String album, String tracknumber, String songname) {
 
-        if (!artist.equals("") && !album.equals("") && !tracknumber.equals("") && !songname.equals("")
-                && artist != null && album != null && tracknumber != null && songname != null) {
+        if (artist != null && album != null && tracknumber != null && songname != null
+                && !"".equals(artist) && !"".equals(album) && !"".equals(tracknumber) && !"".equals(songname)) {
             return true;
         } else {
             return false;
