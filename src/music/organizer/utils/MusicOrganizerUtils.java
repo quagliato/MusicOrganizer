@@ -119,11 +119,12 @@ public class MusicOrganizerUtils {
                             if (inputFiles[i].isDirectory()) {
                                 return MusicOrganizerUtils.validatePath(inputFiles[i].getAbsolutePath(), type);
                             } else {
-                                return MusicOrganizerUtils.validateMp3(inputFiles[i].getName());
+                                flag =  MusicOrganizerUtils.validateMp3(inputFiles[i].getName());
                             }
                         }
                     }
                 }
+                return flag;
             }
         } else {
             return directory.exists();
